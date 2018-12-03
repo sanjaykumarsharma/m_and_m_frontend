@@ -1,0 +1,12 @@
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-container>* {
+    width: 100%;
+}
+
+.login-card {
+    width: 350px;
+}

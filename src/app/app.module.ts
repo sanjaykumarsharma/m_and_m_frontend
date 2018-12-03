@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
          MatNativeDateModule, MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,17 +24,11 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatNativeDateModule,
+    MatFormFieldModule, MatInputModule, MatCardModule,
+    FormsModule, ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

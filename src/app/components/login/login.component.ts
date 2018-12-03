@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,22 +8,35 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
-
+     login = {email: null, password: null};
+     hide = true;
+     error = null;
   ngOnInit() {
   }
 
   getEmailError() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
+       if ( this.login.email === '') {
+        return 'You must enter a value';
+       } else {
+         return 'Not a valid email';
+       }
   }
 
   getPasswordError() {
-    return this.password.hasError('required') ? 'You must enter a value' : '';
+    if ( this.login.password === '') {
+      return 'You must enter a value';
+     }
+  }
+
+  submitLoginForm () {
+    return this.http.post('http://localhost:8000/api/login', this.login).subscribe(
+      data => console.log(data),
+      error => {
+        this.error = error.error.error;
+      }
+    );
   }
 
 }
